@@ -48,6 +48,11 @@ function getNumber()
 
    num_counter++;
    return nums[num_counter-1];
+
+
+  
+//  const max=10,min=1;
+//  return Math.floor(Math.random() * (max - min)) + min;
   
 }
 function checkColumn(_num,i,j)
@@ -70,16 +75,17 @@ function checkColumn(_num,i,j)
      while(exludeArr.includes(_num))
      {
       
-               //get number
-               if(num_counter>8)
-               {
-                num_counter=0;
-               }
+              //  //get number
+              //  if(num_counter>8)
+              //  {
+              //   num_counter=0;
+              //  }
  
-                num_counter++;
-                _num= nums[num_counter-1];
+              //   num_counter++;
+              //   _num= nums[num_counter-1];
                 
-                //
+              //   //
+              _num = getNumber();
       _num = checkLine(_num,i,j);
      }
 
@@ -91,57 +97,119 @@ function checkLine(_num,i,j)
           
     while(grid[i].includes(_num))
     {
-     //get number
-     if(num_counter>8)
-     {
-      num_counter=0;
-     }
+    //  //get number
+    //  if(num_counter>8)
+    //  {
+    //   num_counter=0;
+    //  }
 
-      num_counter++;
-      _num= nums[num_counter-1];
+    //   num_counter++;
+    //   _num= nums[num_counter-1];
       
-      //
+    //   //
+    _num = getNumber();
     }
         return _num;
 }
+function checkColRow(_num,i,j)
+{
+  
+  let exludeArr=[...grid[i]];
+
+  //check if empty
+  if((grid[0][0]==undefined))
+  {
+    return _num;
+
+  }
+ 
+  for(let row=0,col=j;row<grid.length;row++)
+  {
+    //add to exlucde list
+    if(grid[row][col]!=undefined)
+    {
+      exludeArr.push(grid[row][col]);//adding exist number to exlude
+    }
+
+   }
+
+     //Keep spawning new random number, until it's not on the exulde list
+     while(exludeArr.includes(_num))
+     {
+      
+              //  //get number
+              //  if(num_counter>8)
+              //  {
+              //   num_counter=0;
+              //  }
+ 
+              //   num_counter++;
+              //   _num= nums[num_counter-1];
+                
+              //   //
+  _num = getNumber();
+              }
+
+              // //check line
+              //  if(grid[i].includes(_num))
+              //  {
+              //    return false;
+              //  }
+               
+   return _num;
+}
 function checkNumBySudokuRules(_num,i,j){
 
-            //בודק שורה
-             _num = checkLine(_num,i,j);
+
+
+  _num=checkColRow(_num,i,j);
+
+while(_num==false)
+{
+  _num=getNumber();
+  _num=checkColRow(_num,i,j);
+}
+
+            // //בודק שורה
+            //  _num = checkLine(_num,i,j);
              
 
 
-             //בודק עמודה
-             _num = checkColumn(_num,i,j);
+            //  //בודק עמודה
+            //  _num = checkColumn(_num,i,j);
+
+
+
 return _num;
 
 }
 
 
 
-function PopluateGrid(grid)
+function PopluateGrid()
 {
 
  let num=0;
+ mixNumsOrder();
 
     for (let i = 0; i < grid.length; i++) 
     {
-      mixNumsOrder();
+
 
         for (let j = 0; j < grid[i].length; j++)
           {
-             
-               //get number
-           if(num_counter>8)
-           {
-            num_counter=0;
-           }
 
-            num_counter++;
-            num= nums[num_counter-1];
+          //      //get number
+          //  if(num_counter>8)
+          //  {
+          //   num_counter=0;
+          //  }
+
+          //   num_counter++;
+          //   num= nums[num_counter-1];
             
-            //
-
+          //   //
+          num=getNumber();
               num= checkNumBySudokuRules(num,i,j)
               grid[i][j]=num;
 
