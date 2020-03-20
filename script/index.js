@@ -8,7 +8,7 @@ function CreateEmptyGrid(rows,cols){
     x[i] = new Array(cols);
   }
 return x;
-
+ 
 }
 var nums;
 const max=10,min=1;
