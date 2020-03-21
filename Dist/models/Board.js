@@ -1,6 +1,7 @@
 var Board = /** @class */ (function () {
     function Board() {
         this.InitilizeGrid();
+        this.SplitToGroups();
     }
     Board.prototype.InitilizeGrid = function () {
         //Making the grid two dimetional array
@@ -13,30 +14,64 @@ var Board = /** @class */ (function () {
         }
     };
     Board.prototype.SplitToGroups = function () {
-        //turning it into two dimentinal array.
-        var grid = new Array(1);
         for (var i = 0; i < 9; i++) {
-            grid[i] = [];
-        }
-    };
+            for (var j = 0; j < 9; j++) {
+                if (i < 3 && j < 3) {
+                    //grp_a
+                    this.Grid[i][j].Group = "grp_a";
+                }
+                else if (i < 3 && j < 6) {
+                    //grp_b
+                    this.Grid[i][j].Group = "grp_b";
+                }
+                else if (i < 3 && j < 9) {
+                    //grp_c
+                    this.Grid[i][j].Group = "grp_c";
+                }
+                else if (i < 6 && j < 3) {
+                    //grp_d
+                    this.Grid[i][j].Group = "grp_d";
+                }
+                else if (i < 6 && j < 6) {
+                    //grp_e
+                    this.Grid[i][j].Group = "grp_e";
+                }
+                else if (i < 6 && j < 9) {
+                    //grp_f
+                    this.Grid[i][j].Group = "grp_f";
+                }
+                else if (i < 9 && j < 3) {
+                    //grp_g
+                    this.Grid[i][j].Group = "grp_g";
+                }
+                else if (i < 9 && j < 6) {
+                    //grp_h
+                    this.Grid[i][j].Group = "grp_h";
+                }
+                else if (i < 9 && j < 9) {
+                    //grp_i
+                    this.Grid[i][j].Group = "grp_i";
+                }
+            } //column for loop
+        } //row for loop
+    }; //end of function
     Board.prototype.RenderTable = function () {
-        // let resultHTML = "";
-        // resultHTML += "<table>";
-        // for (let i = 0; i < 81; i += 9) {
-        //   resultHTML += "<tr>";
-        //   resultHTML += "<td id='cell_" + i + 0 + "'>" + this.Grid[i + 0].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 1 + "'>" + this.Grid[i + 1].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 2 + "'>" + this.Grid[i + 2].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 3 + "'>" + this.Grid[i + 3].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 4 + "'>" + this.Grid[i + 4].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 5 + "'>" + this.Grid[i + 5].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 6 + "'>" + this.Grid[i + 6].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 7 + "'>" + this.Grid[i + 7].Value + "</td>";
-        //   resultHTML += "<td id='cell_" + i + 8 + "'>" + this.Grid[i + 8].Value + "</td>";
-        //   resultHTML + "</tr>";
-        // }
-        // resultHTML += "</table>";
-        // return resultHTML;
+        var table = document.createElement("table");
+        table.id = "sudoku-table";
+        var row = document.createElement("tr");
+        var td = document.createElement("td");
+        for (var i = 0; i < 9; i++) {
+            row = document.createElement("tr");
+            for (var j = 0; j < 9; j++) {
+                td = document.createElement("td");
+                td.id = "cell_i-" + i + "_j-" + j;
+                td.innerText = this.Grid[i][j].Value + "";
+                td.classList.add("cell");
+                row.append(td);
+            }
+            table.append(row);
+        }
+        return table;
     };
     return Board;
 }());
