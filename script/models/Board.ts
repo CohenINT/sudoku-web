@@ -127,7 +127,7 @@ class Board {
         td.classList.add("cell");
         row.append(td);
       }
-      
+      //
       table.append(row);
     
     }
