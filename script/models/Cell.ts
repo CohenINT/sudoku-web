@@ -15,15 +15,17 @@ class Cell{
      this.Group="";
      
   this.OptionTried[0]=true;
-  this.OptionTried[1]=false;
-  this.OptionTried[2]=false;
-  this.OptionTried[3]=false;
-  this.OptionTried[4]=false;
-  this.OptionTried[5]=false;
-  this.OptionTried[6]=false;
-  this.OptionTried[7]=false;
-  this.OptionTried[8]=false;
-  this.OptionTried[9]=false;
+  this.OptionTried[1]=(this.Value==1);
+  this.OptionTried[2]=(this.Value==2);
+  this.OptionTried[3]=(this.Value==3);
+  this.OptionTried[4]=(this.Value==4);
+  this.OptionTried[5]=(this.Value==5);
+  this.OptionTried[6]=(this.Value==6);
+  this.OptionTried[7]=(this.Value==7);
+  this.OptionTried[8]=(this.Value==8);
+  this.OptionTried[9]=(this.Value==9);
+
+    
 
    
 
