@@ -82,3 +82,10 @@ background-color: #e19da5;
 }
 
 
+.border-buttom{
+    border-bottom: 4px solid;
+}
+
+.border-right{
+    border-right: 4px solid;
+}
