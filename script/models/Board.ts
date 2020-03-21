@@ -6,10 +6,9 @@ class Board {
 
 
 
-  public constructor() 
-  {
+  public constructor() {
 
-   this.InitilizeGrid();
+    this.InitilizeGrid();
 
 
 
@@ -37,18 +36,67 @@ class Board {
 
   public SplitToGroups() {
 
-    //turning it into two dimentinal array.
-    let grid = new Array(1);
-    for (let i = 0; i < 9; i++) {
+    for (let i: number = 0; i < 9; i++) {
+      for (let j: number = 0; j < 9; j++) {
 
 
-      grid[i] = [];
+        if (i < 3 && j < 3) {
+          //grp_a
+
+        }
+
+        if (i < 3 && j < 6) {
+          //grp_b
+        }
+
+        if (i < 3 && j < 9) {
+          //grp_c
+        }
 
 
-    }
 
 
-  }
+        if (i < 6 && j < 3) {
+          //grp_d
+        }
+
+        if (i < 6 && j < 6) {
+          //grp_e
+        }
+
+        if (i < 6 && j < 9) {
+          //grp_f
+        }
+
+
+
+
+        if (i < 9 && j < 3) {
+          //grp_g
+        }
+
+        if (i < 9 && j < 6) {
+          //grp_h
+        }
+
+        if (i < 9 && j < 9) {
+          //grp_i
+        }
+
+
+      }//column for loop
+
+
+    }//row for loop
+
+
+
+
+
+  }//end of function
+
+
+
 
   public RenderTable() {
 

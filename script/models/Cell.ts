@@ -7,6 +7,7 @@ class Cell{
   public Value:number;
   public  OptionTried = [];
   public Group:string;
+  
 
     public constructor()
     {
